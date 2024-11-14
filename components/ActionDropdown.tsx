@@ -63,12 +63,13 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
         renameFile({ fileId: file.$id, name, extension: file.extension, path }),
       share: () => updateFileUsers({ fileId: file.$id, emails, path }),
       delete: () =>
-        deleteFile({ fileId: file.$id, path, bucketFileId: file.bucketFileId }),
+        deleteFile({ fileId: file.$id, bucketFileId: file.bucketFileId, path }),
     };
 
     success = await actions[action.value as keyof typeof actions]();
 
     if (success) closeAllModals();
+    setIsLoading(false);
   };
 
   const handleRemoveUser = async (email: string) => {
@@ -91,8 +92,8 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     const { value, label } = action;
 
     return (
-      <DialogContent className={"shad-dialog button"}>
-        <DialogHeader className={"flex flex-col gap-3"}>
+      <DialogContent className={"shad-dialog button overflow-hidden"}>
+        <DialogHeader className={"flex max-w-[330px] flex-col gap-3"}>
           <DialogTitle className={"text-center text-light-100"}>
             {label}
           </DialogTitle>
@@ -120,7 +121,9 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           )}
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
-          <DialogFooter className={"flex flex-col gap-3 md:flex-row"}>
+          <DialogFooter
+            className={"flex max-w-[350px] flex-col gap-3 md:flex-row"}
+          >
             <Button className={"modal-cancel-button"} onClick={closeAllModals}>
               Cancel
             </Button>

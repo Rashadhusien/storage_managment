@@ -12,7 +12,7 @@ interface Props {
   onRemove: (email: string) => void;
 }
 const ImageThumbnail = ({ file }: { file: Models.Document }) => (
-  <div className={"file-details-thumbnail"}>
+  <div className={"file-details-thumbnail overflow-hidden"}>
     <Thumbnail type={file.type} extension={file.extension} url={file.url} />
     <div className="flex flex-col">
       <p className={"subtitle-2 mb-1"}>{file.name}</p>
@@ -24,7 +24,7 @@ const ImageThumbnail = ({ file }: { file: Models.Document }) => (
 const DetailRow = ({ label, value }: { label: string; value: string }) => (
   <div className={"flex"}>
     <p className={"file-details-label text-left"}>{label}</p>
-    <p className={"file-details-value text-left"}>{value}</p>
+    <p className={"file-details-value  text-left "}>{value}</p>
   </div>
 );
 

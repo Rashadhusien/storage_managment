@@ -148,7 +148,6 @@ export const renameFile = async ({
 export const updateFileUsers = async ({
   fileId,
   emails,
-
   path,
 }: UpdateFileUsersProps) => {
   const { databases } = await createAdminClient();
@@ -167,7 +166,7 @@ export const updateFileUsers = async ({
 
     return parseStringify(updatedFile);
   } catch (error) {
-    handleError(error, "Failed to rename file");
+    handleError(error, "Failed to share file");
   }
 };
 
@@ -194,7 +193,7 @@ export const deleteFile = async ({
 
     return parseStringify({ status: "success" });
   } catch (error) {
-    handleError(error, "Failed to rename file");
+    handleError(error, "Failed to delete file");
   }
 };
 
