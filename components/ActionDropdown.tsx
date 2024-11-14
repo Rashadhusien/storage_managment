@@ -93,7 +93,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 
     return (
       <DialogContent className={"shad-dialog button overflow-hidden"}>
-        <DialogHeader className={"flex max-w-[330px] flex-col gap-3"}>
+        <DialogHeader className={"flex max-w-[300px] flex-col gap-3"}>
           <DialogTitle className={"text-center text-light-100"}>
             {label}
           </DialogTitle>
